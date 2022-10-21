@@ -14,12 +14,16 @@ public interface DataJpaRepository extends JpaRepository<Data, Long> {
     //JPA Query customization & configure
     @Query(value = "SELECT * FROM data LIMIT :limit", nativeQuery = true)
     List<Data> findAllByLimit(@Param("limit") Integer limit);
-
+    
+    @Query(value = "SELECT * FROM data WHERE clientId in :clientId", nativeQuery = true)
     List<Data> findByClientId(Long clientId);
-
+    
+    @Query(value = "SELECT * FROM data LIMIT :limit", nativeQuery = true)
     List<Data> findByClientIdOrderByStepCount(Long clientId);
-
+    
+    @Query(value = "SELECT * FROM data LIMIT :limit", nativeQuery = true)
     List<Data> findByClientIdOrderByStepCountDesc(Long clientId);
-
+    
+    @Query(value = "SELECT * FROM data LIMIT :limit", nativeQuery = true)
     List<Data> findByClientIdAndStepCountIsBetween(Long clientId, Integer start, Integer end);
 }
